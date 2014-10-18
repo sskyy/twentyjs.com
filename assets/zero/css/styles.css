@@ -317,3 +317,120 @@ Waypoints
 .delay-05s { animation-delay: 0.5s; -webkit-animation-delay: 0.5s; }
 .delay-1s { animation-delay: 1s; -webkit-animation-delay: 1s; }
 .wp3 { background: url('../img/iphone-bg.png') no-repeat center center; background-position: 200px 10px; height: 100%; }
+
+
+/* ==========================================================================
+HeaderBar
+========================================================================== *
+/* Header */
+@-moz-keyframes reveal-header { 0% { top: -5em; } 100% { top: 0; } }
+@-webkit-keyframes reveal-header { 0% { top: -5em; } 100% { top: 0; } }
+@-o-keyframes reveal-header { 0% { top: -5em; } 100% { top: 0; } }
+@-ms-keyframes reveal-header { 0% { top: -5em; } 100% { top: 0; } }
+@keyframes reveal-header { 0% { top: -5em; } 100% { top: 0; } }
+
+#headerbar {
+  background: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
+  color: inherit;
+  cursor: default;
+  font-size: 0.7em;
+  left: 0;
+  padding: 1em 1.5em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+}
+
+#headerbar h1 {
+  font-weight: 300;
+  margin: 0;
+}
+
+#headerbar nav {
+  letter-spacing: 0.075em;
+  position: absolute;
+  right: 1.5em;
+  text-transform: uppercase;
+  top: 0.75em;
+}
+
+#headerbar nav ul li {
+  display: inline-block;
+  margin-left: 1.5em;
+}
+
+#headerbar nav ul li > ul {
+  display: none;
+}
+
+#headerbar nav ul li a {
+  border: solid 1px transparent;
+  color: inherit;
+  display: inline-block;
+  padding: 0em 0.75em;
+  text-decoration: none;
+}
+
+#headerbar nav ul li .button {
+  font-size: 1em;
+  min-width: 0;
+  width: auto;
+}
+
+#headerbar nav ul li.submenu > a:before {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+}
+
+#headerbar nav ul li.submenu > a:before {
+  content: '\f107';
+  margin-right: 0.65em;
+}
+
+#headerbar nav ul li.active > a, #headerbar nav ul li:hover > a {
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  background: rgba(188, 202, 206, 0.15);
+}
+
+#headerbar nav ul li.current > a {
+  font-weight: 900;
+}
+
+#headerbar.reveal {
+  -moz-animation: reveal-header 0.5s;
+  -webkit-animation: reveal-header 0.5s;
+  -o-animation: reveal-header 0.5s;
+  -ms-animation: reveal-header 0.5s;
+  animation: reveal-header 0.5s;
+}
+
+#headerbar.alt {
+  -moz-animation: none;
+  -webkit-animation: none;
+  -o-animation: none;
+  -ms-animation: none;
+  animation: none;
+  background: transparent;
+  box-shadow: none;
+  color: white;
+  padding: 2em 2.5em;
+  position: absolute;
+}
+
+#headerbar.alt nav {
+  right: 2.5em;
+  top: 1.75em;
+}
+
+#headerbar.alt nav ul li.active > a, #headerbar.alt nav ul li:hover > a {
+  border: solid 1px;
+}
