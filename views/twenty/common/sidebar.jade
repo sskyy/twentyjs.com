@@ -1,12 +1,10 @@
 .left-side
     .inner
         header
-            h2
+            h3
                 a(href="/") TWENTY
         p
-            | 做最好的博客框架
-            br
-            | V0.1.0 预览版
+            | More than Blogging
 
     ul.categories(ng-controller='index.crud' index-type="category")
         li.category(ng-repeat="category in indexes")

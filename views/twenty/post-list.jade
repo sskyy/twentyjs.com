@@ -2,12 +2,7 @@ doctype html
 html
     head
         include common/head.jade
-        script(src="/default/js/index/crud.js")
-        link(rel="stylesheet" href="/twenty/css/style-twoside.css")
-
-        include common/preload-string
-
-        script(src="/default/js/node/crud.js")
+        link(rel="stylesheet" href="/zero/css/style-twoside.css")
 
     body.index.loading(ng-modules="index.crud,node.crud")
         include common/sidebar.jade
@@ -19,5 +14,8 @@ html
             div(style="text-align:center;margin-bottom:10px" ng-show="nodes.length==10")
                 a.button( href="javascript:;" ng-click="next(true)") 下一页
 
-            include common/footer.jade
 
+        include common/scripts.jade
+        script(src="/default/js/index/crud.js")
+        include common/preload-string
+        script(src="/default/js/node/crud.js")

@@ -187,6 +187,9 @@ h2::after { content: " "; border: solid 2px #3dc9b3; display: block; width: 35px
 .wrapper { height: 650px; }
 .nopadding { padding: 0; }
 .inner { padding-top: 170px; }
+ul li {
+  list-style: none;
+}
 /* ==========================================================================
 Hero
 ========================================================================== */
