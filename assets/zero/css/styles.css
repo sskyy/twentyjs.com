@@ -193,17 +193,17 @@ ul li {
 /* ==========================================================================
 Hero
 ========================================================================== */
-.hero { background-color: #242830; no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 0px 0 200px 0; height: auto; }
+.hero { background:url(../img/hero-bg.jpg); no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 0px 0 200px 0; height: auto; }
 .hero h1 { font-size: 38px; letter-spacing: 6px; margin: 10px; }
 .hero h1 span { color: #a1a9b0; display: inline-block; letter-spacing: 4px;}
-.hero p { letter-spacing: 1px;font-size: 16px; padding-top: 30px; }
+.hero p { letter-spacing: 1px;font-size: 16px; padding-top: 30px; color: #fff;}
 .learn-more-btn { background: rgba(64, 71, 85, 1); padding: 15px 18px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; color: #fff; text-transform: uppercase; letter-spacing: 1px; display: inline-block;margin: 60px 0 0; font-weight: bold; }
 .learn-more-btn:hover, .learn-more-btn:focus { background: rgba(64, 71, 85, 0.6); color: #fff; }
 /* ==========================================================================
 twenty_logo
 ========================================================================== */
 .twenty_logo{margin: 0 auto;}
-.twenty_logo img{width:75%;}
+.twenty_logo img{width:70%;}
 /* ==========================================================================
 Logo
 ========================================================================== */
@@ -226,11 +226,11 @@ iPhone Section
 /* ==========================================================================
 Swag
 ========================================================================== */
-.swag { background: url('../img/plants-bg.jpg') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-attachment: fixed; padding: 50px 0; }
+.swag { background: url('../img/hero-bg.jpg') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-attachment: fixed; padding: 50px 0; }
 .swag h1 { color: #fff; font-size: 40px; text-transform: uppercase; letter-spacing: 5px; }
 .swag h1 span { display: block; font-size: 25px; margin-top: 20px; }
-.down-arrow-btn { width: 40px; height: 40px; border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; -o-border-radius: 50%; background: rgba(61, 201, 179, 0.8); display: inline-block; margin: 10px auto 20px; color: #fff; font-size: 16px; line-height: 40px; text-align: center; }
-.down-arrow-btn:hover, .down-arrow-btn:focus { color: #fff; background: rgba(61, 201, 179, 1); }
+.down-arrow-btn { width: 40px; height: 40px; border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; -o-border-radius: 50%; background: rgba(64, 71, 85, 1); display: inline-block; margin: 10px auto 20px; color: #fff; font-size: 16px; line-height: 40px; text-align: center; }
+.down-arrow-btn:hover, .down-arrow-btn:focus { color: #fff; background: rgba(64, 71, 85, 0.6); }
 /* ==========================================================================
 Portfolio
 ========================================================================== */
@@ -257,13 +257,13 @@ Subscribe
 .subscribe { background: url('../img/keyboard-bg.jpg') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-attachment: fixed; padding: 120px 0 140px; }
 .subscribe h1 { color: #fff; margin-bottom: 40px; }
 .subscribe h1 span { display: block; font-size: 15px; text-transform: uppercase; font-weight: bold; margin-top: 20px; letter-spacing: 1px; }
-.subscribe input[type=text] { background-color: rgba(255, 255, 255, 0.1); border: solid 1px #fff; padding: 20px; width: 30%; color: #fff; }
-.subscribe input[type=submit] { background: rgba(61, 201, 179, 0.5); border: solid 1px rgba(61, 201, 179, 0.5); padding: 20px; color: #fff; text-transform: uppercase; letter-spacing: 1px; transition: all 0.5s ease; -moz-transition: all 0.5s ease; -webkit-transition: all 0.5s ease; -o-transition: all 0.5s ease; }
-.subscribe input[type=submit]:hover { background: rgba(61, 201, 179, 1); border: solid 1px rgba(61, 201, 179, 1); color: #fff; }
+.subscribe input[type=text] { background-color: rgba(255, 255, 255, 0.1); border: solid 1px rgba(64, 71, 85, 1); padding: 20px; width: 30%; color: #fff; }
+.subscribe input[type=submit] { background: rgba(64, 71, 85, 1); border: solid 1px rgba(64, 71, 85, 1); padding: 20px; color: #fff; text-transform: uppercase; letter-spacing: 1px; transition: all 0.5s ease; -moz-transition: all 0.5s ease; -webkit-transition: all 0.5s ease; -o-transition: all 0.5s ease; }
+.subscribe input[type=submit]:hover { background: rgba(64, 71, 85, 1); border: solid 1px rgba(64, 71, 85, 1); color: #fff; }
 /* ==========================================================================
 CTA
 ========================================================================== */
-.ignite-cta { background-color: #242830; padding: 70px 0; }
+.ignite-cta { background-color: rgba(64, 71, 85, 1); padding: 70px 0; }
 .ignite-btn { display: inline-block; padding: 25px 40px; color: #fff; border: solid 1px #fff; text-transform: uppercase; font-weight: bold; letter-spacing: 1px; }
 .ignite-btn:hover, .ignite-btn:focus { color: #3dc9b3; border: solid 1px #3dc9b3; }
 /* ==========================================================================
@@ -289,7 +289,7 @@ Contact
 Footer
 ========================================================================== */
 footer a { color: #a1a9b0; }
-footer { background-color: #242830; padding: 40px 0 30px; }
+footer { background-color: #242830; padding: 10px 0 10px; }
 footer p { color: #fff; }
 ul.legals { list-style: none; color: #fff; line-height: 25px; }
 ul.legals li { display: inline-block; }
