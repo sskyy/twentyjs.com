@@ -193,15 +193,21 @@ ul li {
 /* ==========================================================================
 Hero
 ========================================================================== */
-.hero { background: url('../img/hero-bg.jpg') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 65px 0 300px 0; height: auto; }
+.hero { background-color: #242830; no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 0px 0 200px 0; height: auto; }
 .hero h1 { font-size: 38px; letter-spacing: 6px; margin: 10px; }
 .hero h1 span { color: #a1a9b0; display: inline-block; letter-spacing: 4px;}
-.hero p { letter-spacing: 1px; }
-.learn-more-btn { background: rgba(61, 201, 179, 1); padding: 20px 40px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; color: #fff; text-transform: uppercase; letter-spacing: 1px; display: inline-block; -webkit-box-shadow: 0px 3px 0px 0px #309383; -moz-box-shadow: 0px 3px 0px 0px #309383; box-shadow: 0px 3px 0px 0px #309383; margin: 60px 0 0; font-weight: bold; }
-.learn-more-btn:hover, .learn-more-btn:focus { background: rgba(61, 201, 179, 0.6); color: #fff; }
+.hero p { letter-spacing: 1px;font-size: 16px; padding-top: 30px; }
+.learn-more-btn { background: rgba(64, 71, 85, 1); padding: 15px 18px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; color: #fff; text-transform: uppercase; letter-spacing: 1px; display: inline-block;margin: 60px 0 0; font-weight: bold; }
+.learn-more-btn:hover, .learn-more-btn:focus { background: rgba(64, 71, 85, 0.6); color: #fff; }
 /* ==========================================================================
-Intro
+twenty_logo
 ========================================================================== */
+.twenty_logo{margin: 0 auto;}
+.twenty_logo img{width:75%;}
+/* ==========================================================================
+Logo
+========================================================================== */
+.twenty_logo{width: }
 .intro { background: #f3f5f8; }
 .intro p { margin: 50px 0 0; }
 h1.arrow { font-size: 15px; text-transform: uppercase; color: #353535; letter-spacing: 1px; background: url('../img/h1-bg.png') no-repeat center bottom; padding-bottom: 30px; font-weight: bold; }
