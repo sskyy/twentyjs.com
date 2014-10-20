@@ -1,4 +1,5 @@
-.form-box .header{
+.form-box .header img{
+ width: 90%;
 }
 
 .form-box .header h2 {
@@ -10,4 +11,34 @@
     position: relative;
     text-transform: uppercase;
     text-align: center;
+
+}
+html,body{
+	background-color: #3E444E;
+}
+
+.form-group input{
+	 margin: 0 auto;
+	 background-color: #363c45;
+	 border: solid 1px #484D58;
+	 width: 300px;
+	 height: 40px;
+	 border-radius: 5px !important;
+	 color: #fff!important;
+}
+.form-group input[type=text]{
+	 color: #fff;
+}
+.form-group input:focus {
+	
+	border-color: #5d6472 !important;
+}
+.bg-aqua{
+	background-color: #40C27D!important;
+	border-radius: 5px !important;
+	width: 80px;
+	height: 38px;
+	float: left;
+	margin-left: 12px;
+	margin-top: -12px;
 }
