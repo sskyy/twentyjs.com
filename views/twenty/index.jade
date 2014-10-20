@@ -10,7 +10,7 @@ html
                     div.row
                         div.col-md-8.col-md-offset-2.text-center.inner
                             div.twenty_logo
-                                img(src="zero/img/logo.svg")      
+                                img(src="zero/img/logo.svg")
                             p.animated.fadeInUp.delay-05s
                                 | We are the ZeroJS team, we build ZeroJS for dreams
                     div.row
@@ -150,8 +150,9 @@ html
                     i.fa.fa-paper-plane
                         span Subscribe to stay in the loop
                 form(action="#")
-                    input(type="text" name="" value="" required)
-                    input(type="submit" name="" value="Send")
+                    div.subscribe-wrapper
+                        input(type="text" name="" value="" required)
+                        input(type="submit" name="" value="Send")
 
         include common/footer.jade
         include common/scripts.jade
