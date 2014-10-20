@@ -267,8 +267,8 @@ Subscribe
 /* ==========================================================================
 CTA
 ========================================================================== */
-.ignite-cta { background-color: rgba(64, 71, 85, 1); padding: 70px 0; }
-.ignite-btn { display: inline-block; padding: 25px 40px; color: #fff; border: solid 1px #fff; text-transform: uppercase; font-weight: bold; letter-spacing: 1px; }
+.ignite-cta { background-color: rgba(64, 71, 85, 1); padding: 70px 0;  }
+.ignite-btn { display: inline-block; padding: 15px 20px; color: #fff; border-radius:5px; border: solid 1px #fff; text-transform: uppercase; font-weight: bold; letter-spacing: 1px; }
 .ignite-btn:hover, .ignite-btn:focus { color: #272b33; border: solid 1px #272b33; }
 /* ==========================================================================
 Team
@@ -277,7 +277,7 @@ Team
 ul.social-buttons { list-style: none; margin: 0; padding: 0; }
 ul.social-buttons li { display: inline-block; margin-right: 10px; }
 ul.social-buttons li:last-child { margin-right: 0; }
-.social-btn { width: 40px; height: 40px; border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; -o-border-radius: 50%; background: #242830; display: inline-block; color: #fff; font-size: 17px; line-height: 40px; text-align: center; }
+.social-btn { width: 40px; height: 40px; border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; -o-border-radius: 50%; background: #404755; display: inline-block; color: #fff; font-size: 17px; line-height: 40px; text-align: center; }
 .social-btn:hover, .social-btn:focus { background: #53cf8e; color: #fff; }
 .social { margin-top: 25px }
 /* ==========================================================================
