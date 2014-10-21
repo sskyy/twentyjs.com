@@ -2644,7 +2644,7 @@ Component: timeline
 }
 /* skin-black logo */
 .skin-black .logo {
-  background-color: #ffffff;
+  background-color: #323339;
   color: #000;
   height: 110px;
   padding-left: 30px;
@@ -2654,7 +2654,7 @@ Component: timeline
   color: #000;
 }
 .skin-black .logo:hover {
-  background: #fcfcfc;
+  background: #303136;
 }
 .skin-black .logo img {
   width: 80%;

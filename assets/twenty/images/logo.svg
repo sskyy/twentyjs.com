@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1000px" height="279px" viewBox="0 0 1000 279" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.1 (8751) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="120.5 0 241.310544 69.75 241.310544 209.25 120.5 279 -0.310543828 209.25 -0.310543828 69.75 "></polygon>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="98.8380899%" id="linearGradient-3">
+            <stop stop-color="#50ED7E" offset="0%"></stop>
+            <stop stop-color="#21938D" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#50ED72" offset="0%"></stop>
+            <stop stop-color="#217193" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#50EDC5" offset="0%"></stop>
+            <stop stop-color="#629321" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="2" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Group" sketch:type="MSLayerGroup" transform="translate(-21.000000, 0.000000)">
+            <g id="New-Mask-Group-+-T" transform="translate(22.000000, 0.000000)">
+                <g id="New-Mask-Group">
+                    <mask id="mask-2" sketch:name="Mask" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                    <path d="M-116.874582,137.24597 L-76.4583061,207.249014 L326.482585,-25.3890181 L286.066309,-95.3920618 L-116.874582,137.24597 Z" id="Rectangle-3" fill="url(#linearGradient-3)" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                    <path d="M-156.646424,253.190422 L-116.230148,323.193466 L286.710743,90.5554343 L246.294467,20.5523906 L-156.646424,253.190422 Z" id="Rectangle-4" fill="url(#linearGradient-4)" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                    <path d="M-88.5439554,306.631722 L-48.1276792,376.634766 L354.813212,143.996734 L314.396936,73.99369 L-88.5439554,306.631722 Z" id="Rectangle-5" fill="url(#linearGradient-5)" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                </g>
+                <text id="T" fill="#FFFFFF" filter="url(#filter-6)" sketch:type="MSTextLayer" font-family="ShiShangZhongHeiJianTi" font-size="170" font-weight="normal">
+                    <tspan x="65" y="201">T</tspan>
+                </text>
+            </g>
+            <text id="Twentyjs" sketch:type="MSTextLayer" font-family="ShiShangZhongHeiJianTi" font-size="170" font-weight="normal" fill="#FFFFFF">
+                <tspan x="314" y="201">Twentyjs</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
