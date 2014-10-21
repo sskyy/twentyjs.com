@@ -14,13 +14,13 @@
 
 }
 html,body{
-	background-color: #3E444E;
+	background-color: #323339;
 }
 
 .form-group input{
 	 margin: 0 auto;
-	 background-color: #363c45;
-	 border: solid 1px #484D58;
+	 background-color: #2E2F35;
+	 border: solid 1px #3A3B42;
 	 width: 300px;
 	 height: 40px;
 	 border-radius: 5px !important;

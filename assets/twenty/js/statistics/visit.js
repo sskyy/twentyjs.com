@@ -11,12 +11,12 @@ angular.module('statistic.visit',['ngResource','angles']).controller('visits',fu
     datasets: [
       {
         label: "Visits",
-        fillColor: "rgba(28, 202, 204, 0.2)",
-        strokeColor: "rgba(28, 202, 204,1)",
-        pointColor: "rgba(28, 202, 204,1)",
-        pointStrokeColor: "rgba(28, 202, 204,1)",
-        pointHighlightFill: "rgba(28, 202, 204,.8)",
-        pointHighlightStroke: "rgba(28, 202, 204,.8)",
+        fillColor: "rgba(64,194,125, 0.1)",
+        strokeColor: "rgba(64,194,125, 0.6)",
+        pointColor: "rgba(64,194,125, 0.6)",
+        pointStrokeColor: "rgba(64,194,125, 0.6)",
+        pointHighlightFill: "rgba(64,194,125, 0.6)",
+        pointHighlightStroke: "rgba(64,194,125, 0.6)",
         data: [0,0]
       }
     ]
