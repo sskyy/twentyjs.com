@@ -1226,7 +1226,6 @@ body > .header .navbar-form input {
 .form-control:focus {
   border-color: #999 !important;
   box-shadow: none;
-  border-radius: 3px;
 }
 .form-group.has-success label {
   color: #1aae88;

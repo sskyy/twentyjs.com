@@ -462,3 +462,6 @@ HeaderBar
 #headerbar.alt nav ul li.active > a, #headerbar.alt nav ul li:hover > a {
   border: solid 1px;
 }
+.special.container.text-center{
+	padding-top:100px;
+}
