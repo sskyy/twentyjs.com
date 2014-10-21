@@ -12,8 +12,7 @@ html,body{
     box-shadow: 1px 0px 1px rgba(0,0,0,.1);
 
     background-attachment: scroll, scroll, scroll, fixed;
-    background-color: #645862;
-    background-image: url("images/light-bl.svg"), url("images/light-br.svg"), url("images/overlay.png"), url("http://zerojs.qiniudn.com/bg3.jpg");
+    background-color: rgba(64, 71, 85, 1);
     background-position: bottom left, bottom right, top left, top center;
     background-repeat: no-repeat, no-repeat, repeat, no-repeat;
     background-size: 25em, 25em, auto, cover;
@@ -32,6 +31,10 @@ html,body{
     font-weight: bold;
 }
 
+.left-side .inner header img{
+   width: 65%;
+}
+
 .right-side{
     padding: 20px 15px;
     box-sizing: border-box;
@@ -42,11 +45,12 @@ ul.categories{
     margin-right: 15px;
     margin-top: 30px;
     text-align: left;
-    padding-left: 70px;
+    padding-left: 50px;
+    
 }
 
 ul.categories li a{
-    color: #eee;
+    color: #878E93;
     display: inline-block;
     margin-bottom: 5px;
     text-decoration: none;
