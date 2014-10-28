@@ -1,0 +1,20 @@
+{
+  "name": "zero-configure",
+  "version": "0.0.6",
+  "description": "zero module",
+  "zero": {
+    "dependencies": {
+      "request": "^0.0.1"
+    },
+    "name": "configure"
+  },
+  "author": {
+    "name": "jiamiu"
+  },
+  "gitHead": "07c4ca59313d7db5106b1818bfa41f454209b0b8",
+  "readme": "ERROR: No README data found!",
+  "_id": "zero-configure@0.0.6",
+  "scripts": {},
+  "_shasum": "8e47e8db22f3df9787072ab4d0824c392dc08008",
+  "_from": "zero-configure@"
+}

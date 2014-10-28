@@ -1,0 +1,23 @@
+{
+  "name": "zero-respond",
+  "version": "0.0.8",
+  "description": "zero module",
+  "zero": {
+    "dependencies": {
+      "request": "^0.0.1",
+      "model": "^0.0.1",
+      "bus": "^0.0.1",
+      "logger": "^0.0.1"
+    },
+    "name": "respond"
+  },
+  "author": {
+    "name": "jiamiu"
+  },
+  "gitHead": "1de73f3463ebe6939fe87d7dbcb370eaddc25b8f",
+  "readme": "ERROR: No README data found!",
+  "_id": "zero-respond@0.0.8",
+  "scripts": {},
+  "_shasum": "39ce2724fc5bbcd86e7fd820585df8f71d8183ba",
+  "_from": "zero-respond@"
+}

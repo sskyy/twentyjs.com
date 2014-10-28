@@ -1,0 +1,23 @@
+{
+  "name": "zero-node",
+  "version": "0.0.6",
+  "description": "zero module",
+  "zero": {
+    "dependencies": {
+      "request": "^0.0.1",
+      "model": "^0.0.1",
+      "configure": "^0.0.1",
+      "bus": "^0.0.1"
+    },
+    "name": "node"
+  },
+  "author": {
+    "name": "jiamiu"
+  },
+  "gitHead": "223181dfc7fe795b1551bb597d4c8ddd8d6b6092",
+  "readme": "ERROR: No README data found!",
+  "_id": "zero-node@0.0.6",
+  "scripts": {},
+  "_shasum": "a87fdc2f4a416b57a038ea119356c8a251ed4150",
+  "_from": "zero-node@"
+}

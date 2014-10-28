@@ -1,0 +1,18 @@
+{
+  "name": "zero-bus",
+  "version": "0.0.7",
+  "description": "zero module",
+  "zero": {
+    "dependencies": {},
+    "name": "bus"
+  },
+  "author": {
+    "name": "jiamiu"
+  },
+  "gitHead": "48157c907a9fcf8ac9b1792ed778397bf55aeaaa",
+  "readme": "ERROR: No README data found!",
+  "_id": "zero-bus@0.0.7",
+  "scripts": {},
+  "_shasum": "36c95c3bad0e30733ce6c3d6e17885f7c3c78b19",
+  "_from": "zero-bus@"
+}

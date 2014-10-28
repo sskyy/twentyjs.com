@@ -1,0 +1,20 @@
+{
+  "name": "zero-request",
+  "version": "0.0.6",
+  "description": "zero module",
+  "zero": {
+    "dependencies": {
+      "bus": "^0.0.1"
+    },
+    "name": "request"
+  },
+  "author": {
+    "name": "jiamiu"
+  },
+  "gitHead": "68a496480f725a20df4e7cb7afc4648e4c41e636",
+  "readme": "ERROR: No README data found!",
+  "_id": "zero-request@0.0.6",
+  "scripts": {},
+  "_shasum": "822b9081f1388be646948ac640eaa2d9344bb75e",
+  "_from": "zero-request@"
+}

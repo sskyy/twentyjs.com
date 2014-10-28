@@ -1,0 +1,22 @@
+{
+  "name": "zero-rbac",
+  "version": "0.0.6",
+  "description": "zero module",
+  "zero": {
+    "dependencies": {
+      "request": "^0.0.1",
+      "bus": "^0.0.1",
+      "model": "^0.0.1"
+    },
+    "name": "rbac"
+  },
+  "author": {
+    "name": "jiamiu"
+  },
+  "gitHead": "7def80f4dece9a5a7d7499947ff2d366020a488c",
+  "readme": "ERROR: No README data found!",
+  "_id": "zero-rbac@0.0.6",
+  "scripts": {},
+  "_shasum": "d7c724f7136250bca1847876a37e2c75c08ae691",
+  "_from": "zero-rbac@"
+}

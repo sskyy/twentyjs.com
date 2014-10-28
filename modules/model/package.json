@@ -1,0 +1,20 @@
+{
+  "name": "zero-model",
+  "version": "0.0.6",
+  "description": "zero module",
+  "zero": {
+    "dependencies": {
+      "bus": "^0.0.1"
+    },
+    "name": "model"
+  },
+  "author": {
+    "name": "jiamiu"
+  },
+  "gitHead": "7d1417af711282a5a1f6d30f216755062930eac6",
+  "readme": "ERROR: No README data found!",
+  "_id": "zero-model@0.0.6",
+  "scripts": {},
+  "_shasum": "93fdd7182e274a93f373ed4aa3e48a911a7aeb0d",
+  "_from": "zero-model@"
+}

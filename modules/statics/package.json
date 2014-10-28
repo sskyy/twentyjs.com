@@ -1,0 +1,18 @@
+{
+  "name": "zero-statics",
+  "version": "0.0.5",
+  "description": "zero module",
+  "zero": {
+    "dependencies": {},
+    "name": "statics"
+  },
+  "author": {
+    "name": "jiamiu"
+  },
+  "gitHead": "fb28edd0c985192a0c13f687ec1bc04a630a11b7",
+  "readme": "ERROR: No README data found!",
+  "_id": "zero-statics@0.0.5",
+  "scripts": {},
+  "_shasum": "d513e88c3dcc9b12e2c8dbd78caa2ba06557050d",
+  "_from": "zero-statics@"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "zero-user",
+  "version": "0.0.8",
+  "description": "zero module",
+  "zero": {
+    "dependencies": {
+      "request": "^0.0.1",
+      "bus": "^0.0.1",
+      "model": "^0.0.1",
+      "session": "^0.0.1",
+      "rest": "^0.0.1"
+    },
+    "name": "user"
+  },
+  "author": {
+    "name": "jiamiu"
+  },
+  "gitHead": "5589fc5f8b002f29617535bfe7109ee59c2508d9",
+  "readme": "ERROR: No README data found!",
+  "_id": "zero-user@0.0.8",
+  "scripts": {},
+  "_shasum": "c77f49ba37294247a2c38542fd4aaa321a2cdde0",
+  "_from": "zero-user@"
+}

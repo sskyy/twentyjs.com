@@ -1,0 +1,24 @@
+{
+  "name": "zero-theme",
+  "version": "0.0.9",
+  "description": "zero module",
+  "zero": {
+    "dependencies": {
+      "request": "^0.0.1",
+      "statics": "^0.0.1",
+      "configure": "^0.0.1",
+      "logger": "^0.0.1",
+      "respond": "^0.0.1",
+      "model": "^0.0.1"
+    }
+  },
+  "author": {
+    "name": "jiamiu"
+  },
+  "gitHead": "f4dfdb1a94eb0c2143d36f1c043548c74255ea93",
+  "readme": "ERROR: No README data found!",
+  "_id": "zero-theme@0.0.9",
+  "scripts": {},
+  "_shasum": "707b76fef72a2afcfdfd3f08638601c7d7285f1d",
+  "_from": "zero-theme@"
+}

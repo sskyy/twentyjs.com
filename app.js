@@ -1,56 +1,52 @@
-/**
- * app.js
- *
- * Use `app.js` to run your app without `sails lift`.
- * To start the server, run: `node app.js`.
- *
- * This is handy in situations where the sails CLI is not relevant or useful.
- *
- * For example:
- *   => `node app.js`
- *   => `forever start app.js`
- *   => `node debug app.js`
- *   => `modulus deploy`
- *   => `heroku scale`
- *
- *
- * The same command-line arguments are supported, e.g.:
- * `node app.js --silent --port=80 --prod`
- */
+var agent = require('webkit-devtools-agent');
+//agent.start()
 
-// Ensure a "sails" can be located:
-(function() {
-  var sails;
-  try {
-    sails = require('sails');
-  } catch (e) {
-    console.log(e)
-    console.error('To run an app using `node app.js`, you usually need to have a version of `sails` installed in the same directory as your app.');
-    console.error('To do that, run `npm install sails`');
-    console.error('');
-    console.error('Alternatively, if you have sails installed globally (i.e. you did `npm install -g sails`), you can use `sails lift`.');
-    console.error('When you run `sails lift`, your app will still use a local `./node_modules/sails` dependency if it exists,');
-    console.error('but if it doesn\'t, the app will run with the global sails instead!');
-    return;
+
+var express = require('express'),
+  app = express(),
+  http = require("http"),
+  server = http.createServer(app),
+  bodyParser = require('body-parser'),
+  multer  = require('multer'),
+  zero = require('./system/core/zero'),
+  colors = require('colors'),
+  argv = require('optimist').argv,
+  port = argv.port || 3000,
+  path = require('path');
+
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(multer({ dest: './uploads/'}))
+app.use( '/uploads', express.static( path.join(__dirname,'./uploads')) )
+
+
+app.engine('jade', require('jade').__express);
+app.engine('html', require('ejs').renderFile);
+app.engine('ejs', require('ejs').renderFile);
+
+app.set('views', __dirname )
+
+//save express ref to app
+app.express = express
+
+global['APP'] = app
+global['ZERO'] = zero
+global['SERVER'] = server
+
+require('./system/core/bootstrap')(app,{}, function( err ){
+  if( err ){
+    zero.error( "bootstrap failed, due to", err)
+    return console.trace(err)
   }
 
-  // Try to get `rc` dependency
-  var rc;
-  try {
-    rc = require('rc');
-  } catch (e0) {
-    try {
-      rc = require('sails/node_modules/rc');
-    } catch (e1) {
-      console.error('Could not find dependency: `rc`.');
-      console.error('Your `.sailsrc` file(s) will be ignored.');
-      console.error('To resolve this, run:');
-      console.error('npm install rc --save');
-      rc = function () { return {}; };
-    }
+  zero.banner()
+  zero.mlog("zero","listening",port)
+  zero.warn("current environment : " + (argv.prod?"production":"development"))
+
+  server.listen(port)
+
+  if( !argv.prod){
+    require('./system/core/dev')(server, app)
   }
-
-
-  // Start server
-  sails.lift(rc('sails'));
-})();
+})

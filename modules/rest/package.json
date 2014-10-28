@@ -1,0 +1,22 @@
+{
+  "name": "zero-rest",
+  "version": "0.0.7",
+  "description": "zero module",
+  "zero": {
+    "dependencies": {
+      "request": "^0.0.1",
+      "respond": "^0.0.1",
+      "model": "^0.0.1"
+    },
+    "name": "rest"
+  },
+  "author": {
+    "name": "jiamiu"
+  },
+  "gitHead": "12555a7e1df7d9e1d9d71e1a7c4508c62d9aa7c7",
+  "readme": "ERROR: No README data found!",
+  "_id": "zero-rest@0.0.7",
+  "scripts": {},
+  "_shasum": "5bc53aa4a5b90cdc7c861d4ecf846c95071f5ba1",
+  "_from": "zero-rest@"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "zero-index",
+  "version": "0.0.7",
+  "description": "zero module",
+  "zero": {
+    "dependencies": {
+      "model": "^0.0.1",
+      "bus": "^0.0.1"
+    },
+    "name": "index"
+  },
+  "author": {
+    "name": "jiamiu"
+  },
+  "gitHead": "eef37477c2f8a088358dbfd3b925f2b5f02d6f60",
+  "readme": "ERROR: No README data found!",
+  "_id": "zero-index@0.0.7",
+  "scripts": {},
+  "_shasum": "c436824084e40ec3cda37b78321d7cf35518d8c3",
+  "_from": "zero-index@"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "zero-logger",
+  "version": "0.0.6",
+  "description": "zero module",
+  "zero": {
+    "dependencies": {}
+  },
+  "author": {
+    "name": "jiamiu"
+  },
+  "gitHead": "f3dd76e715e65b67d2d849f733a36757dd40ae82",
+  "readme": "ERROR: No README data found!",
+  "_id": "zero-logger@0.0.6",
+  "scripts": {},
+  "_shasum": "f7f5a45b9b6265cb41be0a9902bfc351710511f8",
+  "_from": "zero-logger@"
+}

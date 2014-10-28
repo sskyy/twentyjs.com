@@ -1,0 +1,25 @@
+{
+  "name": "zero-statistic",
+  "version": "0.0.9",
+  "description": "zero module",
+  "zero": {
+    "dependencies": {
+      "request": "^0.0.1",
+      "model": "^0.0.1",
+      "bus": "^0.0.1",
+      "respond": "^0.0.1",
+      "logger": "^0.0.1",
+      "rest": "^0.0.1"
+    },
+    "name": "statistic"
+  },
+  "author": {
+    "name": "jiamiu"
+  },
+  "gitHead": "3d62da3efdb1adfcb42cdf87ae1b2dbbd4ca5232",
+  "readme": "ERROR: No README data found!",
+  "_id": "zero-statistic@0.0.9",
+  "scripts": {},
+  "_shasum": "84568a1358cb11aaa54948d83d6047a262c1b2d1",
+  "_from": "zero-statistic@"
+}
