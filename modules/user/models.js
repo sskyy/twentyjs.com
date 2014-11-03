@@ -3,7 +3,13 @@ module.exports = [{
     connection: 'localDisk',
 
     attributes: {
-      name: 'string'
+      name: 'string',
+      password : {
+        type : 'string'
+      }
+    },
+    security : {
+      password: ['encryptPermanent']
     },
     rest : true
   }]

@@ -1,6 +1,6 @@
 {
   "name": "zero-rbac",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "zero module",
   "zero": {
     "dependencies": {
@@ -13,10 +13,28 @@
   "author": {
     "name": "jiamiu"
   },
-  "gitHead": "7def80f4dece9a5a7d7499947ff2d366020a488c",
-  "readme": "ERROR: No README data found!",
-  "_id": "zero-rbac@0.0.6",
+  "gitHead": "fcba8f5f4528066d10ea7416e835d1feb2549b37",
+  "_id": "zero-rbac@0.0.8",
   "scripts": {},
-  "_shasum": "d7c724f7136250bca1847876a37e2c75c08ae691",
-  "_from": "zero-rbac@"
+  "_shasum": "aa8bc3ae37e0975fe042897abdd69702723c5a8b",
+  "_from": "zero-rbac@",
+  "_npmVersion": "2.1.5",
+  "_nodeVersion": "0.10.31",
+  "_npmUser": {
+    "name": "sskyy",
+    "email": "skyking_H@hotmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "sskyy",
+      "email": "skyking_H@hotmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "aa8bc3ae37e0975fe042897abdd69702723c5a8b",
+    "tarball": "http://registry.npmjs.org/zero-rbac/-/zero-rbac-0.0.8.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/zero-rbac/-/zero-rbac-0.0.8.tgz",
+  "readme": "ERROR: No README data found!"
 }

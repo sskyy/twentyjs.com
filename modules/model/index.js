@@ -6,35 +6,6 @@ var Promise = require('bluebird'),
 var diskAdapter = require('sails-disk')
 //var mongoAdapter = require('sails-mongo')
 
-var config = {
-  adapters: {
-    'default': diskAdapter,
-    disk: diskAdapter,
-//    mongo : mongoAdapter
-  },
-  connections: {
-    localDisk: {
-      adapter: 'disk'
-    },
-//    mongo : {
-//      adapter : 'mongo'
-//    }
-  },
-  defaults: {
-    migrate: 'alter'
-  }
-};
-
-var lifeCycleCallback =[
-  'beforeCreate',
-  'beforeValidate',
-  'beforeDestroy',
-  'beforeUpdate',
-  'afterCreate',
-  'afterValidate',
-  'afterDestroy',
-  'afterUpdate'
-]
 
 function extendListener(module) {
   //TODO listen model:action
@@ -45,24 +16,33 @@ function extendListener(module) {
     ['find', 'create', 'update', 'destroy','findOne'].forEach(function (method) {
 
       module.listen[ name+'.'+method] ={
-        "name" : method + name[0].toUpperCase() + name.slice(1),
+        "name" : method + "." + name,
         "function": function () {
-          ZERO.mlog("model","on ", name, method, arguments)
+          module.dep.logger.log("on", name, method)
           //this bus is a started forked bus or snapshot
-          var bus = this
+          var bus = this,
+            args = _.toArray(arguments)
+
 
           //we should use cloned orm model function, so inside the function we can trigger lifecycle callbacks
           var clonedModel = cloneModel(module.models[name], name, bus.snapshot())
 
-          return clonedModel[method].apply(clonedModel, arguments).then(done).catch(fail)
+          console.log("fapply calling", name,method)
+          return bus.fapply([name+"."+method].concat( args ), function(){
+            return callModelMethod(clonedModel, method, args)
+          })
 
-          function done(data){
-            bus.data(name + "." + method, data)
-            return data
-          }
+          function callModelMethod(clonedModel, method, args){
+            var where = _.omit(args[0],"populate")
+            if( /^find/.test(method) && model.relations){
+              _.forEach( model.relations, function( relationDef, relationName){
+                where = _.omit(where,relationName)
+              })
+            }
 
-          function fail(err){
-            return bus.error(err)
+            var replacedArgs = [where].concat(args.slice(1))
+
+            return clonedModel[method].apply(clonedModel, replacedArgs)
           }
         }
       }
@@ -73,20 +53,6 @@ function extendListener(module) {
 function cloneModel( model,name, bus ){
 
   var clonedModel = _.clone( model )
-  clonedModel._callbacks = _.cloneDeep(model._callbacks)
-
-  lifeCycleCallback.forEach( function( callbackName){
-
-    clonedModel._callbacks[callbackName].push( function modelLifeCycleCallback( val,cb){
-      var transformCallbackName = callbackName.replace(/([a-z]+)([A-Z])([a-z]+)/,"$2$3.$1").toLowerCase()
-      bus.fire( name+"."+transformCallbackName, val).then( function(){
-        cb()
-      }).catch(function(err){
-        ZERO.error("LIFE CYCLE CALLBACK FAILED",err)
-        cb(name+"."+transformCallbackName + " failed" )
-      })
-    })
-  })
 
   clonedModel.__proto__ = model
   return clonedModel
@@ -99,6 +65,24 @@ function cloneModel( model,name, bus ){
 module.exports = {
   deps : ['bus'],
   orm: new Waterline,
+  config : {
+    adapters: {
+      "default": diskAdapter,
+      disk: diskAdapter,
+      //mongo : mongoAdapter
+    },
+    connections: {
+      localDisk: {
+        adapter: 'disk'
+      },
+      //mongo : {
+      //  adapter : 'mongo'
+      //}
+    },
+    defaults: {
+      migrate: 'alter'
+    }
+  },
   models : {},
   /**
    * 如果模块定义了 models 属性，则读取其中的每个 model 定义，并通过 waterline 来建立 orm 。
@@ -110,10 +94,13 @@ module.exports = {
     var root = this
     if (!module.models) return
 
-    module.models.forEach(function (model) {
+    _.forEach(module.models,function (model, identity) {
+      if( !model.identity ){
+        model.identity = identity
+      }
       //add model placeholder here, so other modules may know what models are registered
       if( root.models[model.identity]){
-        ZERO.warn("duplicated model definition :",model.identity,"from",root.name)
+        logger.warn("duplicated model definition :",model.identity,"from",root.name)
       }else{
         root.models[model.identity] = _.defaults(model,{
           migrate : 'safe',
@@ -130,7 +117,7 @@ module.exports = {
     })
 
     return new Promise(function (resolve, reject) {
-      root.orm.initialize(config, function (err, models) {
+      root.orm.initialize(root.config, function (err, models) {
         if (err) return reject( err);
 
         _.extend( root.models , models.collections )

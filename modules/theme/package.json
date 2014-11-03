@@ -1,6 +1,6 @@
 {
   "name": "zero-theme",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "zero module",
   "zero": {
     "dependencies": {
@@ -15,10 +15,28 @@
   "author": {
     "name": "jiamiu"
   },
-  "gitHead": "f4dfdb1a94eb0c2143d36f1c043548c74255ea93",
-  "readme": "ERROR: No README data found!",
-  "_id": "zero-theme@0.0.9",
+  "gitHead": "e5ad345a12761a3e5ce050fabcf5f2b6cb5b8af3",
+  "_id": "zero-theme@0.0.10",
   "scripts": {},
-  "_shasum": "707b76fef72a2afcfdfd3f08638601c7d7285f1d",
-  "_from": "zero-theme@"
+  "_shasum": "26c73bd1f9840dd2149d847a8eeeae12842fed5c",
+  "_from": "zero-theme@",
+  "_npmVersion": "2.1.5",
+  "_nodeVersion": "0.10.31",
+  "_npmUser": {
+    "name": "sskyy",
+    "email": "skyking_H@hotmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "sskyy",
+      "email": "skyking_H@hotmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "26c73bd1f9840dd2149d847a8eeeae12842fed5c",
+    "tarball": "http://registry.npmjs.org/zero-theme/-/zero-theme-0.0.10.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/zero-theme/-/zero-theme-0.0.10.tgz",
+  "readme": "ERROR: No README data found!"
 }

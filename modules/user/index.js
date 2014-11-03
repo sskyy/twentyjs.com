@@ -32,29 +32,10 @@ var userModule = {
         }else{
           next()
         }
-
-
-
-
         return
-
-//        if( req.session.user ){
-//          next()
-//        }else{
-//          //TODO only for dev
-//          userModule.dep.model.models['user'].find({limit:1}).then(function(users){
-//            req.session.user = users[0]
-//            next()
-//          }).catch(function(err){
-//            ZERO.error(err)
-//            next()
-//          })
-//        }
-
       },
       "order" : {first:true}
     }
-
   }
 }
 

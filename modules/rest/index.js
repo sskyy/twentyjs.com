@@ -34,6 +34,7 @@ function hierarchyObject(val){
  */
 module.exports = {
   deps : ['respond','model','request'],
+  keywords : ['count'],
   /**
    * 如果模块声明的 model 中的 rest 属性为 true, 则自动为该 model 添加 rest 接口。
    * @param module
@@ -64,6 +65,11 @@ module.exports = {
         //TODO separate the respond handler from route would be better?
         root.dep.request.add( url, function crud( req, res, next){
 
+          //Notice we jump keywords here
+          if( req.param('id') && root.keywords.indexOf(req.param('id'))!==-1){
+            return next()
+          }
+
           //TODO convert params which key has '.' to object
           var args = [hierarchyObject(_.merge(req.params, req.body, req.query))]
           if( instanceMethod == 'update' ){
@@ -74,10 +80,10 @@ module.exports = {
           ZERO.mlog("REST","fire" , event ,args)
 
           req.bus.fcall.apply( req.bus, ["rest.fire"].concat(args).concat(function(){
-            return this.fire.apply(this, args ).then( function(){
+            return this.fire.apply(this, args ).then( function( modelMethodResult ){
               //use respond module to help us respond
 //            ZERO.mlog("REST","retriving data" , event ,req.bus.data( event ))
-              var result = _.cloneDeep(req.bus.data( event ))
+              var result = _.cloneDeep( modelMethodResult['model.'+instanceMethod+"."+modelName])
               if( instanceMethod =='update' ){
                 result = result.pop()
               }

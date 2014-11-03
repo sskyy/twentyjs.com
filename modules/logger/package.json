@@ -9,9 +9,26 @@
     "name": "jiamiu"
   },
   "gitHead": "f3dd76e715e65b67d2d849f733a36757dd40ae82",
-  "readme": "ERROR: No README data found!",
   "_id": "zero-logger@0.0.6",
   "scripts": {},
   "_shasum": "f7f5a45b9b6265cb41be0a9902bfc351710511f8",
-  "_from": "zero-logger@"
+  "_from": "zero-logger@",
+  "_npmVersion": "1.4.23",
+  "_npmUser": {
+    "name": "sskyy",
+    "email": "skyking_H@hotmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "sskyy",
+      "email": "skyking_H@hotmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "f7f5a45b9b6265cb41be0a9902bfc351710511f8",
+    "tarball": "http://registry.npmjs.org/zero-logger/-/zero-logger-0.0.6.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/zero-logger/-/zero-logger-0.0.6.tgz",
+  "readme": "ERROR: No README data found!"
 }

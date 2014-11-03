@@ -1,5 +1,13 @@
 var _ = require('lodash')
 
+function ensure(array,item){
+  if(array.indexOf(item)==-1){
+      array.push( item)
+  }
+  return array
+}
+
+
 var rbac = {
   models : require('./models'),
   acl : {
@@ -39,7 +47,7 @@ var rbac = {
       if( applyResult && applyResult.then ){
         applyResult.then(function(){
           req.session.user.roles = req.session.user.roles || []
-          req.session.user.roles.push( rolesToApply[n] )
+          ensure(req.session.user.roles, rolesToApply[n] )
         }).catch(function(err){
           if( err ) ZERO.error("rbac","apply roles error",err)
         }).finally(function(){
@@ -47,7 +55,7 @@ var rbac = {
         })
       }else if(applyResult==true){
           req.session.user.roles = req.session.user.roles || []
-          req.session.user.roles.push( rolesToApply[n] )
+          ensure(req.session.user.roles, rolesToApply[n] )
           applyNext(++n)
       }else{
         applyNext(++n)

@@ -1,45 +1,51 @@
 var loader = require('./loader'),
-  Promise = require('bluebird'),
   _ = require('lodash'),
   util = require('./util'),
-  orderedCollection = require('./orderedCollection')
+  orderedCollection = require('./orderedCollection'),
+  winston = require('winston'),
+  logger = new (winston.Logger)({
+    transports: [
+      new (winston.transports.Console)({ level: 'debug' }),
+    ]})
 
-module.exports = function (app, opt, cb) {
+module.exports = function ( opt, cb) {
 
-  return loader.loadAll.call(app, opt, function (err) {
+  return loader.loadAll( opt, function (err, modules) {
     if( err ){
-      ZERO.error("load modules error, due to", err)
+      logger.error("load modules error, due to", err)
       return cb(err)
     }
 
+    opt.app.modules = modules
     var bootstraps = new orderedCollection
 
-    _.forEach(app.modules, function (module) {
+    //console.log( "modules ====>",Object.keys(modules).length)
+    _.forEach( modules, function (module) {
       if (module.bootstrap) {
         bootstraps.push(module, module.name + ".bootstrap", module.bootstrap.order || false)
       }
     })
 
-
     bootstraps.forEachSeries(function (module, next) {
-
-      ZERO.mlog("bootstrap", module.name)
+      logger.info("bootstrap ::", module.name)
       //when every module is initialized, call their bootstrap function
 
       try {
         var bootstrapResult = _.isFunction(module.bootstrap) ?
-          module.bootstrap.call(module) :
-          (_.isFunction(module.bootstrap.function) && module.bootstrap.function.call(module))
+          module.bootstrap.call(module, opt.app, opt.server) :
+          (_.isFunction(module.bootstrap.function) && module.bootstrap.function.call(module, opt.app, opt.server))
 
 
         util.isPromiseAlike(bootstrapResult) ? bootstrapResult.then(function () { next() }) : next()
 
       } catch (e) {
-        ZERO.error("bootstrap error happened in module", module.name)
+        logger.error("bootstrap error happened in module", module.name)
         console.trace(e)
       }
 
-    }, cb)
+    }, function( err ){
+      cb(err, modules)
+    })
 
   })
 }

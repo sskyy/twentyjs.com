@@ -52,7 +52,7 @@ function generateBeforeCreateCallback(indexName, nodeName, models) {
 
         //to support query from browser.
         //when using `category.id=2` from browser, waterline look for key name of 'category.id' to match query
-        val[indexName+'.id'] = index.id
+        //val[indexName+'.id'] = index.id
         return val
       }
     }).filter( isPromiseAlike ))

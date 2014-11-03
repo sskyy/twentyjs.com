@@ -1,0 +1,41 @@
+{
+  "name": "zero-security",
+  "version": "0.0.3",
+  "description": "zero module",
+  "dependencies": {
+    "xss": "^0.1.12"
+  },
+  "zero": {
+    "dependencies": {
+      "configure": "^0.0.1",
+      "bus": "^0.0.1"
+    }
+  },
+  "author": {
+    "name": "jiamiu"
+  },
+  "gitHead": "2cd203812a92bfdb265978464995b5497d760a10",
+  "_id": "zero-security@0.0.3",
+  "scripts": {},
+  "_shasum": "d00148df884d8d25fc2728f8df795b5cbce231ce",
+  "_from": "zero-security@",
+  "_npmVersion": "2.1.5",
+  "_nodeVersion": "0.10.31",
+  "_npmUser": {
+    "name": "sskyy",
+    "email": "skyking_H@hotmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "sskyy",
+      "email": "skyking_H@hotmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "d00148df884d8d25fc2728f8df795b5cbce231ce",
+    "tarball": "http://registry.npmjs.org/zero-security/-/zero-security-0.0.3.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/zero-security/-/zero-security-0.0.3.tgz",
+  "readme": "ERROR: No README data found!"
+}

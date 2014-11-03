@@ -10,9 +10,26 @@
     "name": "jiamiu"
   },
   "gitHead": "fb28edd0c985192a0c13f687ec1bc04a630a11b7",
-  "readme": "ERROR: No README data found!",
   "_id": "zero-statics@0.0.5",
   "scripts": {},
   "_shasum": "d513e88c3dcc9b12e2c8dbd78caa2ba06557050d",
-  "_from": "zero-statics@"
+  "_from": "zero-statics@",
+  "_npmVersion": "1.4.23",
+  "_npmUser": {
+    "name": "sskyy",
+    "email": "skyking_H@hotmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "sskyy",
+      "email": "skyking_H@hotmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "d513e88c3dcc9b12e2c8dbd78caa2ba06557050d",
+    "tarball": "http://registry.npmjs.org/zero-statics/-/zero-statics-0.0.5.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/zero-statics/-/zero-statics-0.0.5.tgz",
+  "readme": "ERROR: No README data found!"
 }

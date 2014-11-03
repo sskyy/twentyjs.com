@@ -6,6 +6,11 @@ var fs = require('fs'),
   config = {
     modulePath : path.join(process.cwd(),'modules')
   },
+  winston = require('winston'),
+  logger = new (winston.Logger)({
+    transports: [
+      new (winston.transports.Console)({ level: 'info' }),
+    ]}),
   modules
 
 function requireModulesByPath( modulePath) {
@@ -13,24 +18,23 @@ function requireModulesByPath( modulePath) {
     result = {}
 
   files.forEach(function (fileName) {
-    var info = require(path.join(modulePath ,fileName,'package.json'))
-    var moduleName = info.name.replace("zero-","")
+    var packageInfo = require(path.join(modulePath ,fileName,'package.json'))
+    var moduleName = (packageInfo.zero && packageInfo.zero.alias) || packageInfo.name.replace("zero-","")
 
-    //1. check name
-    if( Object.keys(_.pick(result[moduleName],['name','dependencies','info','status'])).length){
-      throw new Error("you cannot use 'name','dependencies', 'info', or 'status' as property name in your module, they are specified by zero")
-    }
+    packageInfo.zero = packageInfo.zero || {}
+    packageInfo.zero.dependencies = packageInfo.zero.dependencies || {}
 
-    //2. check dependencies
-    var modulesNotExists = _.without.apply(_,[Object.keys(info.zero.dependencies)].concat(files))
+
+    //1. check dependencies
+    var modulesNotExists = _.without.apply(_,[Object.keys(packageInfo.zero.dependencies)].concat(files))
     if( modulesNotExists.length ){
       throw new Error( "module "+ moduleName + " dependencies : " + modulesNotExists.join(",") + " not exists.")
     }
 
-    //3. check config files
-    if( info.zero.configs ){
-      !_.isArray( info.zero.configs ) && ( info.zero.configs = [info.zero.configs])
-      info.zero.configs.forEach(function( configFile){
+    //2. check config files
+    if( packageInfo.zero.configs ){
+      !_.isArray( packageInfo.zero.configs ) && ( packageInfo.zero.configs = [packageInfo.zero.configs])
+      packageInfo.zero.configs.forEach(function( configFile){
         if( !fs.existsSync( path.join( config.modulePath, moduleName, configFile)) ){
           throw new Error("module "+moduleName+" lack of config file: "+configFile)
         }
@@ -38,9 +42,16 @@ function requireModulesByPath( modulePath) {
     }
 
     result[moduleName] = require(path.join(modulePath ,fileName))
-    result[moduleName].info = info
+
+    //3. check module property
+    if( Object.keys(_.pick(result[moduleName],['name','dependencies','packageInfo','status'])).length){
+      throw new Error("you cannot use 'name','dependencies', 'packageInfo', or 'status' as property name in your module, they are specified by zero")
+    }
+
+
+    result[moduleName].packageInfo = packageInfo
     result[moduleName].name = moduleName
-    result[moduleName].dependencies =  info.zero.dependencies || {}
+    result[moduleName].dependencies =  packageInfo.zero.dependencies || {}
 
   })
 
@@ -57,28 +68,24 @@ function callInit( moduleName, from, modules, nextModule ){
 
   if( module.status ) return nextModule()
 
-  ZERO.mlog("loader", "begin init", moduleName)
   from = from || []
   module.status = 'initializing'
 
+
   if(_.intersection( Object.keys(module.dependencies), from).length !== 0){
-    throw new Error("circular dependencies detected for ", from.join(','))
+    throw new Error("circular dependencies detected for "+ from.concat(moduleName).join(','))
   }
-
-
 
   //1. init all dependencies first
   async.eachSeries(Object.keys(module.dependencies), function( dependencyName, nextDep){
 
     if( modules[dependencyName].status ) return nextDep()
 
-    //console.log("init dependency", dependencyName)
-    callInit( dependencyName, from.concat[moduleName], modules, nextDep)
+    callInit( dependencyName, from.concat(moduleName), modules, nextDep)
 
   }, function initDependenciesDone( err ){
     if( err )  return nextModule(err)
 
-    //console.log("dependencies of", moduleName,"done")
 
     //2.1 attach all dependencies to module.dep
     module.dep = {}
@@ -111,9 +118,8 @@ function callInit( moduleName, from, modules, nextModule ){
 }
 
 exports.loadAll = function (opt, loadModulesDone) {
-  var app = this,modules
+  var modules
   opt = _.defaults(opt || {}, config)
-
 
   try{
     modules = requireModulesByPath(opt.modulePath)
@@ -121,19 +127,13 @@ exports.loadAll = function (opt, loadModulesDone) {
     return loadModulesDone(e)
   }
 
-  ZERO.info( "modules:",Object.keys(modules).length, Object.keys(modules).join(" | "))
+  logger.info( "modules:",Object.keys(modules).length, Object.keys(modules).join(" | "))
 
   async.eachSeries( Object.keys(modules), function( name, nextModule ){
     if( modules[name].status ) return nextModule()
 
     callInit( name, [], modules, nextModule)
   }, function(err){
-    if( err ){
-      ZERO.error("call module init failed, due to", err)
-      return loadModulesDone(err)
-    }
-
-    app.modules = modules
-    loadModulesDone()
+    loadModulesDone( err , modules)
   })
 }

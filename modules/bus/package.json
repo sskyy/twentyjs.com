@@ -1,18 +1,35 @@
 {
   "name": "zero-bus",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "zero module",
   "zero": {
-    "dependencies": {},
-    "name": "bus"
+    "dependencies": {}
   },
   "author": {
     "name": "jiamiu"
   },
-  "gitHead": "48157c907a9fcf8ac9b1792ed778397bf55aeaaa",
-  "readme": "ERROR: No README data found!",
-  "_id": "zero-bus@0.0.7",
+  "gitHead": "83cca39337351ef4262c43542610f4f006186151",
+  "_id": "zero-bus@0.0.8",
   "scripts": {},
-  "_shasum": "36c95c3bad0e30733ce6c3d6e17885f7c3c78b19",
-  "_from": "zero-bus@"
+  "_shasum": "fc3af9b2d043a6d9df31ce9d63f29bd1a89f9096",
+  "_from": "zero-bus@",
+  "_npmVersion": "2.1.5",
+  "_nodeVersion": "0.10.31",
+  "_npmUser": {
+    "name": "sskyy",
+    "email": "skyking_H@hotmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "sskyy",
+      "email": "skyking_H@hotmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "fc3af9b2d043a6d9df31ce9d63f29bd1a89f9096",
+    "tarball": "http://registry.npmjs.org/zero-bus/-/zero-bus-0.0.8.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/zero-bus/-/zero-bus-0.0.8.tgz",
+  "readme": "ERROR: No README data found!"
 }

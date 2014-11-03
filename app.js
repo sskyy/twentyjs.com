@@ -1,7 +1,3 @@
-var agent = require('webkit-devtools-agent');
-//agent.start()
-
-
 var express = require('express'),
   app = express(),
   http = require("http"),
@@ -29,12 +25,13 @@ app.set('views', __dirname )
 
 //save express ref to app
 app.express = express
+app.modules = []
 
 global['APP'] = app
 global['ZERO'] = zero
 global['SERVER'] = server
 
-require('./system/core/bootstrap')(app,{}, function( err ){
+require('./system/core/bootstrap')({ modulePath : argv.modulePath, app:app, server:server}, function( err, modules ){
   if( err ){
     zero.error( "bootstrap failed, due to", err)
     return console.trace(err)
@@ -43,10 +40,7 @@ require('./system/core/bootstrap')(app,{}, function( err ){
   zero.banner()
   zero.mlog("zero","listening",port)
   zero.warn("current environment : " + (argv.prod?"production":"development"))
+  console.log( "modules : ",Object.keys(modules).length, Object.keys(modules).join("|".cyan))
 
   server.listen(port)
-
-  if( !argv.prod){
-    require('./system/core/dev')(server, app)
-  }
 })

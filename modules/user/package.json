@@ -1,6 +1,6 @@
 {
   "name": "zero-user",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "description": "zero module",
   "zero": {
     "dependencies": {
@@ -8,17 +8,37 @@
       "bus": "^0.0.1",
       "model": "^0.0.1",
       "session": "^0.0.1",
-      "rest": "^0.0.1"
+      "rest": "^0.0.1",
+      "logger": "^0.0.1",
+      "security": "^0.0.1"
     },
     "name": "user"
   },
   "author": {
     "name": "jiamiu"
   },
-  "gitHead": "5589fc5f8b002f29617535bfe7109ee59c2508d9",
-  "readme": "ERROR: No README data found!",
-  "_id": "zero-user@0.0.8",
+  "gitHead": "7ae58ccfd2930b43e0a0a3ee580bfd546c8df8c8",
+  "_id": "zero-user@0.0.10",
   "scripts": {},
-  "_shasum": "c77f49ba37294247a2c38542fd4aaa321a2cdde0",
-  "_from": "zero-user@"
+  "_shasum": "d0fab37db2d5ab884b7868acd753007d6c81a18e",
+  "_from": "zero-user@",
+  "_npmVersion": "2.1.5",
+  "_nodeVersion": "0.10.31",
+  "_npmUser": {
+    "name": "sskyy",
+    "email": "skyking_H@hotmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "sskyy",
+      "email": "skyking_H@hotmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "d0fab37db2d5ab884b7868acd753007d6c81a18e",
+    "tarball": "http://registry.npmjs.org/zero-user/-/zero-user-0.0.10.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/zero-user/-/zero-user-0.0.10.tgz",
+  "readme": "ERROR: No README data found!"
 }

@@ -12,9 +12,27 @@
     "name": "jiamiu"
   },
   "gitHead": "68a496480f725a20df4e7cb7afc4648e4c41e636",
-  "readme": "ERROR: No README data found!",
   "_id": "zero-request@0.0.6",
   "scripts": {},
   "_shasum": "822b9081f1388be646948ac640eaa2d9344bb75e",
-  "_from": "zero-request@"
+  "_from": "zero-request@",
+  "_npmVersion": "2.1.5",
+  "_nodeVersion": "0.10.31",
+  "_npmUser": {
+    "name": "sskyy",
+    "email": "skyking_H@hotmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "sskyy",
+      "email": "skyking_H@hotmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "822b9081f1388be646948ac640eaa2d9344bb75e",
+    "tarball": "http://registry.npmjs.org/zero-request/-/zero-request-0.0.6.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/zero-request/-/zero-request-0.0.6.tgz",
+  "readme": "ERROR: No README data found!"
 }

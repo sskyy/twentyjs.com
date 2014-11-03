@@ -1,7 +1,8 @@
 {
   "name": "zero-twenty",
-  "version": "0.0.14",
+  "version": "0.0.16",
   "description": "zero module",
+  "dependencies": {},
   "zero": {
     "dependencies": {
       "file": "^0.0.1",
@@ -15,7 +16,8 @@
       "configure": "^0.0.1",
       "rbac": "^0.0.1",
       "user": "^0.0.1",
-      "statistic": "^0.0.1"
+      "statistic": "^0.0.1",
+      "security": "^0.0.1"
     },
     "configs": [
       "./config.js"
@@ -25,10 +27,26 @@
   "author": {
     "name": "jiamiu"
   },
-  "gitHead": "4e55b93f3f96c233ec634dfcb4392529d47b6e1f",
-  "readme": "ERROR: No README data found!",
-  "_id": "zero-twenty@0.0.14",
+  "gitHead": "9108f9b8f1a1f5f6bbf4763089aa20da9bdbc3c7",
+  "_id": "zero-twenty@0.0.16",
   "scripts": {},
-  "_shasum": "db22648721223fdbc3b928cc13e6080c0d5d8a0d",
-  "_from": "zero-twenty@"
+  "_shasum": "2583fa6de4658978cb01920a5fb0fbf0efc2f14b",
+  "_from": "zero-twenty@",
+  "_npmVersion": "1.4.23",
+  "_npmUser": {
+    "name": "sskyy",
+    "email": "skyking_H@hotmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "sskyy",
+      "email": "skyking_H@hotmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "2583fa6de4658978cb01920a5fb0fbf0efc2f14b",
+    "tarball": "http://registry.npmjs.org/zero-twenty/-/zero-twenty-0.0.16.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/zero-twenty/-/zero-twenty-0.0.16.tgz"
 }

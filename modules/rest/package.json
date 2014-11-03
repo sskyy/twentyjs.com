@@ -1,6 +1,6 @@
 {
   "name": "zero-rest",
-  "version": "0.0.7",
+  "version": "0.0.10",
   "description": "zero module",
   "zero": {
     "dependencies": {
@@ -14,9 +14,27 @@
     "name": "jiamiu"
   },
   "gitHead": "12555a7e1df7d9e1d9d71e1a7c4508c62d9aa7c7",
-  "readme": "ERROR: No README data found!",
-  "_id": "zero-rest@0.0.7",
+  "_id": "zero-rest@0.0.10",
   "scripts": {},
-  "_shasum": "5bc53aa4a5b90cdc7c861d4ecf846c95071f5ba1",
-  "_from": "zero-rest@"
+  "_shasum": "e58098a7e7c459200ca3e23044d40986e2475dc8",
+  "_from": "zero-rest@",
+  "_npmVersion": "2.1.5",
+  "_nodeVersion": "0.10.31",
+  "_npmUser": {
+    "name": "sskyy",
+    "email": "skyking_H@hotmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "sskyy",
+      "email": "skyking_H@hotmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "e58098a7e7c459200ca3e23044d40986e2475dc8",
+    "tarball": "http://registry.npmjs.org/zero-rest/-/zero-rest-0.0.10.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/zero-rest/-/zero-rest-0.0.10.tgz",
+  "readme": "ERROR: No README data found!"
 }

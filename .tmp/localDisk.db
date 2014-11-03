@@ -1,0 +1,181 @@
+{
+  "data": {
+    "role": [],
+    "rule": [],
+    "statistic": [
+      {
+        "key": "2014-11-03",
+        "type": "GET /*-dailyView",
+        "value": 195,
+        "createdAt": "2014-11-03T03:00:54.605Z",
+        "updatedAt": "2014-11-03T03:19:43.445Z",
+        "id": 1
+      }
+    ],
+    "user": [
+      {
+        "name": "caicai",
+        "email": "caicai@zerojs.io",
+        "password": "caicai",
+        "createdAt": "2014-11-03T03:01:26.590Z",
+        "updatedAt": "2014-11-03T03:01:26.594Z",
+        "id": 1,
+        "roles": [
+          "admin"
+        ]
+      }
+    ],
+    "post": [],
+    "category": [],
+    "media": []
+  },
+  "schema": {
+    "role": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "rule": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "statistic": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "user": {
+      "name": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "post": {
+      "title": {
+        "type": "string"
+      },
+      "content": {
+        "type": "string"
+      },
+      "category": {
+        "type": "array"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "category": {
+      "name": {
+        "type": "string"
+      },
+      "nodes": {
+        "type": "json"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "media": {
+      "name": {
+        "type": "string"
+      },
+      "originalname": {
+        "type": "string"
+      },
+      "mimetype": {
+        "type": "string"
+      },
+      "extension": {
+        "type": "string"
+      },
+      "size": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "role": {},
+    "rule": {},
+    "statistic": {
+      "id": 1
+    },
+    "user": {
+      "id": 1
+    },
+    "post": {},
+    "category": {},
+    "media": {}
+  }
+}

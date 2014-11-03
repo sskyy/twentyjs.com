@@ -12,9 +12,27 @@
     "name": "jiamiu"
   },
   "gitHead": "07c4ca59313d7db5106b1818bfa41f454209b0b8",
-  "readme": "ERROR: No README data found!",
   "_id": "zero-configure@0.0.6",
   "scripts": {},
   "_shasum": "8e47e8db22f3df9787072ab4d0824c392dc08008",
-  "_from": "zero-configure@"
+  "_from": "zero-configure@",
+  "_npmVersion": "2.1.5",
+  "_nodeVersion": "0.10.31",
+  "_npmUser": {
+    "name": "sskyy",
+    "email": "skyking_H@hotmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "sskyy",
+      "email": "skyking_H@hotmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "8e47e8db22f3df9787072ab4d0824c392dc08008",
+    "tarball": "http://registry.npmjs.org/zero-configure/-/zero-configure-0.0.6.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/zero-configure/-/zero-configure-0.0.6.tgz",
+  "readme": "ERROR: No README data found!"
 }

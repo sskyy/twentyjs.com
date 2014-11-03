@@ -7,7 +7,19 @@ var path= require('path'),
  * @module bus
  */
 module.exports = {
-  bus : new Bus,
+  bus : null,
+  config : {
+    longStackTraces: false,
+    log : {
+      "Console" : {
+        level : 'debug'
+      }
+    }
+  },
+  init : function(){
+    console.log("==================")
+    this.bus = new Bus( this.config)
+  },
   expand : function( module ){
     var root = this
     if( module.listen ){

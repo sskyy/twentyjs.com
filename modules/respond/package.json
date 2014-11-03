@@ -15,9 +15,27 @@
     "name": "jiamiu"
   },
   "gitHead": "1de73f3463ebe6939fe87d7dbcb370eaddc25b8f",
-  "readme": "ERROR: No README data found!",
   "_id": "zero-respond@0.0.8",
   "scripts": {},
   "_shasum": "39ce2724fc5bbcd86e7fd820585df8f71d8183ba",
-  "_from": "zero-respond@"
+  "_from": "zero-respond@",
+  "_npmVersion": "2.1.5",
+  "_nodeVersion": "0.10.31",
+  "_npmUser": {
+    "name": "sskyy",
+    "email": "skyking_H@hotmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "sskyy",
+      "email": "skyking_H@hotmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "39ce2724fc5bbcd86e7fd820585df8f71d8183ba",
+    "tarball": "http://registry.npmjs.org/zero-respond/-/zero-respond-0.0.8.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/zero-respond/-/zero-respond-0.0.8.tgz",
+  "readme": "ERROR: No README data found!"
 }

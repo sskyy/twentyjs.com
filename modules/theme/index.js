@@ -256,6 +256,8 @@ module.exports = {
     return extension ? path.join( themePath, templateName) + "." +extension : false
   },
   findMockOption : function( mock, restRoute, themePath){
+    if( !mock ) return false
+
     var root = this,
       output = false
     _.any( Object.keys(mock), function( mockUrl ){

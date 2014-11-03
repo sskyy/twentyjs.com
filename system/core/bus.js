@@ -28,9 +28,10 @@
 var Promise = require('bluebird'),
   _ = require('lodash'),
   async = require('async'),
-  util = require('./util')
+  util = require('./util'),
+  winston = require('winston'),
+  logger
 
-Promise.longStackTraces();
 
 /**
  * Bus是一个超级事件代理类。除了普通的on/fire操作以外，它还能有以下高级特性：
@@ -47,7 +48,13 @@ function Bus(opt) {
     varSplit: '/',
     muteReg: /^!/,
     targetReg: /^@/,
-    track: true
+    track: true,
+    longStackTraces : false,
+    log : {
+      "Console" : {
+        level : 'info'
+      }
+    }
   })
 
   this._mute = {}
@@ -55,6 +62,15 @@ function Bus(opt) {
   this._started = false
   this._id = 0
   this._forked =0
+
+  if( this.opt.longStackTraces ){
+    Promise.longStackTraces();
+  }
+
+  logger  = new (winston.Logger)({
+    transports: _.map( this.opt.log,function( config,transporter){
+      return new (winston.transports[transporter])(config)
+    })});
 }
 
 /**
@@ -77,7 +93,7 @@ Bus.prototype.fork = function () {
   }
 
   newEmptyBust._id = root._forked + 1,
-  root._forked++
+    root._forked++
   return newEmptyBust
 }
 
@@ -91,7 +107,7 @@ Bus.prototype.snapshot = function(options){
   })
 
   if( !this._started ){
-    console.log("you can only snapshot started bus")
+    logger.debug("you can only snapshot started bus")
     return false
   }
 
@@ -131,8 +147,8 @@ Bus.prototype.start = function () {
 
   //runtime data must be set to here, or snapshot will create it own
   _.forEach(['$$data','$$results'],function(key){
-      root[key] = {}
-    })
+    root[key] = {}
+  })
   root['$$error'] = []
 
   root._started = true
@@ -167,7 +183,7 @@ Bus.prototype.setTracker = function () {
  */
 Bus.prototype.data = function( name, data){
   if( !this._started ){
-    console.log("bus not started")
+    logger.debug("bus not started")
     return false
   }
 
@@ -175,7 +191,7 @@ Bus.prototype.data = function( name, data){
 
   if( !data ){
     var ref = getRef( this.$$data, name)
-//    console.log("[BUS] getting data", name, this.$$data, ref)
+//    logger.debug("[BUS] getting data", name, this.$$data, ref)
 //    return _.isObject(ref)?_.cloneDeep(ref):ref
     return ref
   }else{
@@ -218,20 +234,20 @@ function setRef( obj, name, data){
         _.merge(ref[currentName], data)
 
       }else{
-        if( ref[currentName] !== undefined ) console.log("you are changing a exist data",name)
+        if( ref[currentName] !== undefined ) logger.debug("you are changing a exist data",name)
         ref[currentName] = data
       }
 
     }else{
       if( !_.isObject(ref[currentName])) {
-        if( ref[currentName] !== undefined ) console.log("your data will be reset to an object",currentName)
+        if( ref[currentName] !== undefined ) logger.debug("your data will be reset to an object",currentName)
         ref[currentName] = {}
       }
       ref = ref[currentName]
     }
   }
 
-//  console.log("[BUS] setting done", name, obj)
+//  logger.debug("[BUS] setting done", name, obj)
 }
 
 /**
@@ -356,8 +372,8 @@ Bus.prototype.findPlace = function (listener, listeners, cacheIndex) {
   if (!this._firstLastCache) this._firstLastCache = {}
 
   var firstLast = this._firstLastCache[cacheIndex] || findIndex(listeners, function (e) {
-    return e.last == true
-  })
+      return e.last == true
+    })
   if (cacheIndex) {
     if (firstLast == -1 && listener.last) {
       this._firstLastCache[cacheIndex] = listeners.length
@@ -435,14 +451,14 @@ function appendChildListeners(stack) {
 Bus.prototype.fire = function (opt) {
 
   if (!this._started) {
-    console.log("[BUS] not started!")
+    logger.debug("[BUS] not started!")
     return false
   }
 
   var eventOrg = _.isObject(opt) ? opt.event : opt,
     args = _.toArray(arguments).slice(1)
 
-  console.log("[BUS] firing :", eventOrg, 'bus id:', this._id)
+  logger.debug("[BUS] firing :", eventOrg, 'bus id:', this._id)
 
   var caller = arguments.callee.caller.name
 
@@ -507,7 +523,7 @@ Bus.prototype.fire = function (opt) {
         root.$$traceRef.argv = matchedEvent.arguments.concat( cloneOwnProperties(args))
       }
 
-      console.log("[BUS] applying :", eventOrg, listener.module, listener.name)
+      logger.debug("[BUS] applying :", eventOrg, listener.module, listener.name)
       var res = listener.function.apply(root.snapshot(), matchedEvent.arguments.concat(args))
 
       if (root.opt.track) {
@@ -539,7 +555,7 @@ Bus.prototype.fire = function (opt) {
 
   }, function allMatchedEventTriggered( err ){
     if( err ){
-      console.log("[BUS] error", eventOrg)
+      logger.debug("[BUS] error", eventOrg)
       console.trace(err)
       return firePromise.reject( err )
     }
@@ -570,24 +586,47 @@ Bus.prototype.fcall = function(   ){
     eventOrg = args.shift(),
     fn = args.pop()
 
+  var fcallPromise = new Promise(function( resolve, reject){
+    root.fire.apply( root,[eventOrg + ".before"].concat( args)).then( function(){
+      var fcallResult = fn.apply(root, args)
 
-  var fcallResult = root.fire.apply( root,[eventOrg + ".before"].concat( args)).then( function(){
+      if( util.isPromiseAlike(fcallResult) ){
+        return fcallResult.then( function( fcallResultResolved){
+          return root.fire.apply( root, [eventOrg + ".after" ].concat([fcallResultResolved]).concat(args)).then(function( afterResult){
+            logger.debug("after ",eventOrg,afterResult)
+            resolve(fcallResultResolved)
+          }).catch(reject)
+        })
+      }else if( fcallResult instanceof BusError ){
 
-    var result = fn.apply(root, args)
-    if( util.isPromiseAlike(result) ){
-      return result.then( function(){
-        return root.fire.apply( root, [eventOrg + ".after" ].concat(args))
-      })
-    }else if( result instanceof BusError ){
-      return Promise.reject(result)
-    }else{
-      return root.fire.apply( root, [eventOrg + ".after" ].concat(args))
-    }
+        return reject(fcallResult)
+      }else{
+
+        return root.fire.apply( root, [eventOrg + ".after" ].concat([fcallResult]).concat(args)).then(function(){
+          resolve(fcallResult)
+        }).catch(reject)
+      }
+    })
   })
 
-  root['$$results'][eventOrg+".fcall"] = fcallResult
+  if( root['$$results'][eventOrg+".fcall"] ){
+    if( !_.isArray( root['$$results'][eventOrg+".fcall"])) {
+      root['$$results'][eventOrg + ".fcall"] = [root['$$results'][eventOrg + ".fcall"]]
+    }
+    root['$$results'][eventOrg+".fcall"].push( fcallPromise )
+  }else{
+    root['$$results'][eventOrg+".fcall"] = fcallPromise
+  }
 
-  return fcallResult
+  return fcallPromise
+}
+
+Bus.prototype.fapply = function(args, fnToCall){
+  if( !fnToCall ){
+    fnToCall = args
+    args = []
+  }
+  return this.fcall.apply( this, args.concat(fnToCall))
 }
 
 
@@ -615,10 +654,11 @@ function nestedBusPromise( obj ){
       //3. wait for child in object or array resolve
     }else{
 
-      var handler = _.isArray(obj) ? 'all' :'props'
+      var handler = _.isArray(obj) ? 'all' :'props',
+        lodashMethod = _.isArray(obj) ? 'map' :'mapValues'
 
-      resolve(Promise[handler](_.mapValues(obj, function( child){
-        return  util.isPromiseAlike(child) ? nestedBusPromise(child) : child
+      resolve(Promise[handler](_[lodashMethod](obj, function( child){
+        return  nestedBusPromise(child)
       })))
     }
   })
@@ -628,7 +668,7 @@ function nestedBusPromise( obj ){
 function extractPromiseValue( values ){
   return _.mapValues( values, function(i){
     if( util.isPromiseAlike(i) ){
-      return extractPromiseValue(i.value)
+      return ( i.isFulfilled && i.value)? extractPromiseValue( i.isFulfilled() ? i.value() : i) : extractPromiseValue(  i)
     }else if(_.isObject( i)){
       return extractPromiseValue(i)
     }else{
@@ -636,6 +676,8 @@ function extractPromiseValue( values ){
     }
   })
 }
+
+Bus.prototype.extractPromiseValue = extractPromiseValue
 
 /**
  * 注册一个当前Bus内的所有任务执行完后的回调函数，主要用在Bus执行期间有异步任务的时候。
@@ -647,9 +689,10 @@ Bus.prototype.then = function(cb){
 
 
   var root = this
+  root['$$results'] = root['$$results'] || {}
 
   var currentPromiseSnapshot = nestedBusPromise( root['$$results'] ).then(function( values ){
-     return cb.call( root, extractPromiseValue( values ) )
+    return cb.call( root, extractPromiseValue( values ) )
   })
 
   root['$$results']['bus.then.:id'] = root['$$results']['bus.then.:id'] || {}
@@ -686,7 +729,7 @@ function BusError(reason){
  * @returns {*}
  */
 Bus.prototype.error = function( status, error ){
-  console.log("[BUS] error", status, error)
+  logger.debug("[BUS] error", status, error)
   if( arguments.length == 0 )return this.$$error
 
   var reason
@@ -727,7 +770,7 @@ function cloneOwnProperties(object){
     cachedNamespace = ['root'],
     result = _.isArray(object) ? [] : {}
 
-  ;(function _cloneOwnProperties(obj,result,namespace){
+    ;(function _cloneOwnProperties(obj,result,namespace){
     _.forEach(obj,function(v,k){
       if(_.isObject(obj) && obj.hasOwnProperty &&!obj.hasOwnProperty(k)) return
 
@@ -784,7 +827,9 @@ function forEachSeries(array, handler, callback  ){
   next(0)
 }
 
-
+Bus.longStackTraces =function(){
+  Promise.longStackTraces();
+}
 
 
 module.exports = Bus

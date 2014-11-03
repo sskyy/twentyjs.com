@@ -1,14 +1,11 @@
 var schema = require('validate'),
   _ = require('lodash')
 
-module.exports = function( config ){
-
-
+module.exports = function( config, module ){
   var validator = {
     login : schema( config.validator.login ),
     registry : schema( config.validator.registry,{strip:false})
   }
-
 
   return {
     'user.login' : function login( params ){
@@ -19,8 +16,9 @@ module.exports = function( config ){
 
         if( errors.length ) return root.error( 406, errors )
 
-        return root.fire("user.findOne", params).then( function(){
-          var user = _.clone( root.data('user.findOne') )
+        return root.fire("user.findOne", params).then( function(eventResult){
+          var user = _.clone( eventResult['model.findOne.user'])
+          console.log( "user logged in", user)
           if( user ){
             delete user.password
 
@@ -41,10 +39,8 @@ module.exports = function( config ){
 
         if (errors.length) return root.error(406, errors)
         //We may verify invite code or something here
-        return insideBus.fire("user.create", params).then(function () {
-          var user = _.clone(root.data('user.create'))
-          debugger;
-          console.log( "should after user created!!!!!!!!!!!!!!!", user)
+        return insideBus.fire("user.create", params).then(function (eventResult) {
+          var user = _.clone( eventResult['model.create.user'])
           delete user.password
 
           root.session("user",user)
@@ -53,7 +49,6 @@ module.exports = function( config ){
       })
     },
     'user.me' : function(){
-      console.log("===========me", this.session("user"))
       this.data("respond.data", this.session("user"))
     },
     'user.logout' : function(){

@@ -1,5 +1,6 @@
 var _  = require("lodash"),
-   htmlToText = require('html-to-text');
+   htmlToText = require('html-to-text'),
+    markdown = require( "markdown" ).markdown
 
 function extendListener( root, nodeName ){
   root.listen = root.listen || {}
@@ -10,6 +11,10 @@ function extendListener( root, nodeName ){
       ZERO.mlog("node","begin to briefing for", nodeName)
       if( val[root.config.field].length > root.config.limit + root.config.overflow ){
 
+        if( val.type=='markdown'){
+          val[root.config.toField] = markdown.toHTML(val[root.config.toField] )
+        }
+
         val[root.config.toField] =
           htmlToText.fromString(val[root.config.field]).slice(0,root.config.limit).replace(/[,.\uff0c\u3002_-]+$/g,"") + '...'
 
@@ -17,14 +22,12 @@ function extendListener( root, nodeName ){
         ZERO.mlog("node", "too short, no need to brief", val[root.config.field].length)
       }
 
-
-
-    //2. 记录user
-    if( bus.session('user') ){
-      val.user = _.pick(bus.session('user'),['id'])
-      //TODO expose uid to node for searching
-      val.uid = val.user?val.user.id:0
-    }
+      //2. 记录user
+      if( bus.session('user') ){
+        val.user = _.pick(bus.session('user'),['id'])
+        //TODO expose uid to node for searching
+        val.uid = val.user?val.user.id:0
+      }
     }catch(e){
       console.log("briefing err")
       console.trace(e)

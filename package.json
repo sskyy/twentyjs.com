@@ -49,5 +49,5 @@
     "debug": "node debug app.js"
   },
   "main": "app.js",
-  "name": "twentyjs.com"
+  "name": "twentyjs"
 }
